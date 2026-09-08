@@ -31,7 +31,7 @@ class ExampleTest extends TestCase
             'message' => 'Happy birthday, Ralf!',
         ]);
 
-        $response->assertOk()->assertJson(['message' => 'Deine Nachricht ist auf dem Weg zu Ralf. Danke!']);
+        $response->assertOk()->assertJson(['message' => 'Your message is on its way to Ralf. Thank you!']);
         $this->assertDatabaseHas('birthday_messages', ['sender_name' => 'Maya', 'message' => 'Happy birthday, Ralf!']);
         Mail::assertSent(BirthdayMessageReceived::class, function (BirthdayMessageReceived $mail) {
             return $mail->hasTo('ralfanthonijsz@gmail.com');

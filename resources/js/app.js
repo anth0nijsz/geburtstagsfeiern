@@ -15,7 +15,7 @@ const launchConfetti = () => {
 	const canvas = document.querySelector('#confetti');
 	const context = canvas.getContext('2d');
 	const pieces = [];
-	const colors = ['#ff5d35', '#d4f454', '#c9b9ff', '#171717', '#f2eee5'];
+	const colors = ['#b9826c', '#aeb9a7', '#ddd7cd', '#292824', '#f5f2ec'];
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	for (let index = 0; index < 130; index += 1) {
@@ -45,10 +45,10 @@ backButton?.addEventListener('click', () => { cardStage.classList.add('is-hidden
 
 messageForm?.addEventListener('submit', async (event) => {
 	event.preventDefault();
-	const submitButton = messageForm.querySelector('button'); submitButton.disabled = true; messageStatus.textContent = 'Deine Nachricht wird gesendet ...';
+	const submitButton = messageForm.querySelector('button'); submitButton.disabled = true; messageStatus.textContent = 'Your message is being sent ...';
 	try {
 		const response = await fetch('/birthday-messages', { method: 'POST', headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, Accept: 'application/json' }, body: new FormData(messageForm) });
 		const data = await response.json(); if (!response.ok) throw new Error(data.message || 'Could not send your note.');
 		messageForm.reset(); messageStatus.textContent = data.message;
-	} catch (error) { messageStatus.textContent = error.message || 'Die Nachricht konnte nicht gesendet werden.'; } finally { submitButton.disabled = false; }
+	} catch (error) { messageStatus.textContent = error.message || 'Your message could not be sent.'; } finally { submitButton.disabled = false; }
 });

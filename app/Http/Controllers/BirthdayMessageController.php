@@ -21,6 +21,6 @@ class BirthdayMessageController extends Controller
 
         Mail::to('ralfanthonijsz@gmail.com')->send(new BirthdayMessageReceived($birthdayMessage));
 
-        return response()->json(['message' => 'Deine Nachricht ist auf dem Weg zu Ralf. Danke!']);
+        return response()->json(['message' => 'Your message is on its way to Ralf. Thank you!']);
     }
 }

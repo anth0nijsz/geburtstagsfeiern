@@ -17,7 +17,7 @@ class BirthdayMessageReceived extends Mailable
 
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Neue Geburtstagsnachricht von '.$this->birthdayMessage->sender_name);
+        return new Envelope(subject: 'New birthday message from '.$this->birthdayMessage->sender_name);
     }
 
     public function content(): Content

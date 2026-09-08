@@ -23,6 +23,7 @@ class ExampleTest extends TestCase
 
     public function test_a_birthday_message_is_saved_and_emailed_to_ralf(): void
     {
+        $this->withoutMiddleware();
         Mail::fake();
 
         $response = $this->postJson('/birthday-messages', [
